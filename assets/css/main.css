@@ -106,6 +106,123 @@ h6 {
   max-width: none; /* Allow the image to exceed its natural size */
 }
 
+/* Directors Section Styling */
+.directors {
+  padding: 80px 0;
+}
+
+.director-card {
+  background: var(--surface-color);
+  border-radius: 15px;
+  padding: 30px;
+  text-align: center;
+  transition: all 0.3s ease;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.director-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  border-color: var(--accent-color);
+}
+
+.director-image {
+  position: relative;
+  margin-bottom: 25px;
+  border-radius: 50%;
+  overflow: hidden;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 25px;
+  border: 4px solid var(--accent-color);
+}
+
+.director-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+.director-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.director-card:hover .director-image img {
+  transform: scale(1.1);
+}
+
+.director-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 50%;
+}
+
+.director-card:hover .director-overlay {
+  opacity: 1;
+}
+
+.director-overlay .social-links {
+  display: flex;
+  gap: 15px;
+}
+
+.director-overlay .social-links a {
+  width: 40px;
+  height: 40px;
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.director-overlay .social-links a:hover {
+  background: var(--contrast-color);
+  color: var(--accent-color);
+  transform: scale(1.1);
+}
+
+.director-info h4 {
+  color: var(--heading-color);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.director-title {
+  color: var(--accent-color);
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.director-description {
+  color: var(--default-color);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
 .php-email-form .sent-message {
   display: none;
   color: #ffffff;

@@ -316,7 +316,7 @@
     <section class="full-page-video-banner">
       <div class="video-background">
         <iframe id="video-player" 
-                src="https://www.youtube.com/embed/cAvd6ZmVi_8?si=G6mHczX2HyW2P1IM&autoplay=1&mute=0&loop=1&playlist=cAvd6ZmVi_8&controls=1&showinfo=0&rel=0" 
+                src="https://www.youtube.com/embed/cAvd6ZmVi_8?si=G6mHczX2HyW2P1IM&autoplay=1&mute=1&loop=1&playlist=cAvd6ZmVi_8&controls=0&showinfo=0&rel=0&modestbranding=1" 
                 title="YouTube video player" 
                 frameborder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
@@ -343,10 +343,10 @@
         </div>
       </div>
       
-      <!-- Volume Control -->
+      <!-- Play Control -->
       <div class="volume-control">
         <button id="volume-btn" class="volume-btn" onclick="toggleVolume()">
-          <i class="bi bi-volume-mute" id="volume-icon"></i>
+          <i class="bi bi-play-fill" id="volume-icon"></i>
         </button>
       </div>
     </section>
@@ -557,8 +557,9 @@
   <script src="assets/js/main.js"></script>
 
   <script>
-    let isMuted = false;
-    
+    let isMuted = true;
+    let userInteracted = false;
+
     function toggleVolume() {
       const videoFrame = document.getElementById('video-player');
       const volumeIcon = document.getElementById('volume-icon');
@@ -567,34 +568,50 @@
       if (isMuted) {
         // Unmute the video
         videoFrame.src = videoFrame.src.replace('&mute=1', '&mute=0');
-        volumeIcon.className = 'bi bi-volume-up';
-        volumeBtn.title = 'Mute Video';
+        volumeIcon.className = 'bi bi-pause-fill';
+        volumeBtn.title = 'Pause Video';
         isMuted = false;
       } else {
         // Mute the video
         videoFrame.src = videoFrame.src.replace('&mute=0', '&mute=1');
-        volumeIcon.className = 'bi bi-volume-mute';
-        volumeBtn.title = 'Unmute Video';
+        volumeIcon.className = 'bi bi-play-fill';
+        volumeBtn.title = 'Play Video';
         isMuted = true;
       }
     }
 
-    // Initialize the video with sound enabled
+    // Initialize when page loads
     document.addEventListener('DOMContentLoaded', function() {
-      const videoFrame = document.getElementById('video-player');
       const volumeIcon = document.getElementById('volume-icon');
+      const volumeBtn = document.getElementById('volume-btn');
       
       // Set initial state
-      volumeIcon.className = 'bi bi-volume-up';
-      document.getElementById('volume-btn').title = 'Mute Video';
-      isMuted = false;
+      volumeIcon.className = 'bi bi-play-fill';
+      volumeBtn.title = 'Play Video';
+      isMuted = true;
       
-      // Try to unmute after a short delay to allow autoplay
-      setTimeout(function() {
-        if (videoFrame.src.includes('&mute=1')) {
+      // Listen for user interaction to unmute
+      document.addEventListener('click', function() {
+        if (!userInteracted && isMuted) {
+          const videoFrame = document.getElementById('video-player');
           videoFrame.src = videoFrame.src.replace('&mute=1', '&mute=0');
+          volumeIcon.className = 'bi bi-pause-fill';
+          volumeBtn.title = 'Pause Video';
+          isMuted = false;
+          userInteracted = true;
         }
-      }, 1000);
+      });
+      
+      // Auto-unmute after 3 seconds
+      setTimeout(function() {
+        if (!userInteracted && isMuted) {
+          const videoFrame = document.getElementById('video-player');
+          videoFrame.src = videoFrame.src.replace('&mute=1', '&mute=0');
+          volumeIcon.className = 'bi bi-pause-fill';
+          volumeBtn.title = 'Pause Video';
+          isMuted = false;
+        }
+      }, 3000);
     });
   </script>
 

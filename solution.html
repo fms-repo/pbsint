@@ -74,6 +74,35 @@
       z-index: 3;
     }
 
+    .volume-control {
+      position: absolute;
+      bottom: 30px;
+      right: 30px;
+      z-index: 4;
+    }
+
+    .volume-btn {
+      background: rgba(255, 255, 255, 0.2);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .volume-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+      border-color: rgba(255, 255, 255, 0.5);
+      transform: scale(1.1);
+    }
+
     .solution-title {
       font-size: 4rem;
       font-weight: 700;
@@ -248,7 +277,8 @@
     <!-- Full Page Video Banner -->
     <section class="full-page-video-banner">
       <div class="video-background">
-        <iframe src="https://www.youtube.com/embed/cAvd6ZmVi_8?si=G6mHczX2HyW2P1IM&autoplay=1&mute=1&loop=1&playlist=cAvd6ZmVi_8&controls=0&showinfo=0&rel=0" 
+        <iframe id="video-player" 
+                src="https://www.youtube.com/embed/cAvd6ZmVi_8?si=G6mHczX2HyW2P1IM&autoplay=1&mute=0&loop=1&playlist=cAvd6ZmVi_8&controls=1&showinfo=0&rel=0" 
                 title="YouTube video player" 
                 frameborder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
@@ -273,6 +303,13 @@
             </div>
           </div>
         </div>
+      </div>
+      
+      <!-- Volume Control -->
+      <div class="volume-control">
+        <button id="volume-btn" class="volume-btn" onclick="toggleVolume()">
+          <i class="bi bi-volume-mute" id="volume-icon"></i>
+        </button>
       </div>
     </section>
 
@@ -302,9 +339,9 @@
             <div class="feature-icon">
               <i class="bi bi-robot"></i>
             </div>
-            <h3 class="feature-title">AI-Powered Automation</h3>
+            <h3 class="feature-title">AI-Powered Customs Automation</h3>
             <p class="feature-description">
-              Advanced artificial intelligence algorithms automate complex trade operations, reducing manual errors and improving efficiency across supply chain processes.
+              Streamline end-to-end customs processing with AI-powered automation, reducing manual work and ensuring compliance.
             </p>
           </div>
 
@@ -312,49 +349,79 @@
             <div class="feature-icon">
               <i class="bi bi-diagram-3"></i>
             </div>
-            <h3 class="feature-title">Supply Chain Optimization</h3>
+            <h3 class="feature-title">Post-PO Journey Tracking</h3>
             <p class="feature-description">
-              Real-time visibility and predictive analytics optimize supply chain operations, ensuring seamless flow from procurement to delivery.
+              Track the complete post-PO journey from port arrival to final delivery with real-time visibility and updates.
             </p>
           </div>
 
           <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
             <div class="feature-icon">
-              <i class="bi bi-ship"></i>
+              <i class="bi bi-file-earmark-check"></i>
             </div>
-            <h3 class="feature-title">Shipping Desk Management</h3>
+            <h3 class="feature-title">Document Centralization</h3>
             <p class="feature-description">
-              Comprehensive shipping desk operations management with automated customs clearance, documentation, and compliance tracking.
+              Centralize permits, licenses, and certificates across trade and logistics in one secure, accessible platform.
             </p>
           </div>
 
           <div class="feature-card" data-aos="fade-up" data-aos-delay="600">
             <div class="feature-icon">
-              <i class="bi bi-building"></i>
+              <i class="bi bi-chat-dots"></i>
             </div>
-            <h3 class="feature-title">Custom House Agent Operations</h3>
+            <h3 class="feature-title">Unified Communication Hub</h3>
             <p class="feature-description">
-              Streamlined custom house agent operations with intelligent workflow automation, regulatory compliance, and real-time status updates.
+              Bring chat, email, SMS, and system alerts into a single, AI-driven hub for seamless communication management.
             </p>
           </div>
 
           <div class="feature-card" data-aos="fade-up" data-aos-delay="700">
             <div class="feature-icon">
-              <i class="bi bi-graph-up"></i>
+              <i class="bi bi-currency-dollar"></i>
             </div>
-            <h3 class="feature-title">Real-time Analytics</h3>
+            <h3 class="feature-title">Cost Tracking & Reconciliation</h3>
             <p class="feature-description">
-              Comprehensive dashboard with real-time analytics, KPI monitoring, and predictive insights to drive informed decision-making.
+              Track and reconcile every cost from port arrival to final delivery with detailed financial transparency.
             </p>
           </div>
 
           <div class="feature-card" data-aos="fade-up" data-aos-delay="800">
             <div class="feature-icon">
+              <i class="bi bi-link-45deg"></i>
+            </div>
+            <h3 class="feature-title">HS Code Management</h3>
+            <p class="feature-description">
+              Link HS codes to SKUs with approvals and a full audit trail for complete regulatory compliance.
+            </p>
+          </div>
+
+          <div class="feature-card" data-aos="fade-up" data-aos-delay="900">
+            <div class="feature-icon">
+              <i class="bi bi-calendar-check"></i>
+            </div>
+            <h3 class="feature-title">Document Expiry Monitoring</h3>
+            <p class="feature-description">
+              AI monitors document expiries against shipment ETAs to prevent delays and ensure smooth operations.
+            </p>
+          </div>
+
+          <div class="feature-card" data-aos="fade-up" data-aos-delay="1000">
+            <div class="feature-icon">
+              <i class="bi bi-truck"></i>
+            </div>
+            <h3 class="feature-title">Shipment Tracking</h3>
+            <p class="feature-description">
+              Real-time shipment tracking with GPS integration and automated status updates throughout the delivery process.
+            </p>
+          </div>
+
+          <div class="feature-card" data-aos="fade-up" data-aos-delay="1100">
+            <div class="feature-icon">
               <i class="bi bi-shield-check"></i>
             </div>
-            <h3 class="feature-title">Compliance & Security</h3>
+            <h3 class="feature-title">Regulatory Approval</h3>
             <p class="feature-description">
-              Built-in compliance management and security protocols ensure adherence to international trade regulations and data protection standards.
+              Automated regulatory approval processes with compliance monitoring and instant notification systems.
             </p>
           </div>
         </div>
@@ -439,6 +506,48 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <script>
+    let isMuted = false;
+    
+    function toggleVolume() {
+      const videoFrame = document.getElementById('video-player');
+      const volumeIcon = document.getElementById('volume-icon');
+      const volumeBtn = document.getElementById('volume-btn');
+      
+      if (isMuted) {
+        // Unmute the video
+        videoFrame.src = videoFrame.src.replace('&mute=1', '&mute=0');
+        volumeIcon.className = 'bi bi-volume-up';
+        volumeBtn.title = 'Mute Video';
+        isMuted = false;
+      } else {
+        // Mute the video
+        videoFrame.src = videoFrame.src.replace('&mute=0', '&mute=1');
+        volumeIcon.className = 'bi bi-volume-mute';
+        volumeBtn.title = 'Unmute Video';
+        isMuted = true;
+      }
+    }
+
+    // Initialize the video with sound enabled
+    document.addEventListener('DOMContentLoaded', function() {
+      const videoFrame = document.getElementById('video-player');
+      const volumeIcon = document.getElementById('volume-icon');
+      
+      // Set initial state
+      volumeIcon.className = 'bi bi-volume-up';
+      document.getElementById('volume-btn').title = 'Mute Video';
+      isMuted = false;
+      
+      // Try to unmute after a short delay to allow autoplay
+      setTimeout(function() {
+        if (videoFrame.src.includes('&mute=1')) {
+          videoFrame.src = videoFrame.src.replace('&mute=1', '&mute=0');
+        }
+      }, 1000);
+    });
+  </script>
 
 </body>
 

@@ -30,6 +30,10 @@
   <link href="assets/css/main.css" rel="stylesheet">
 
   <style>
+    body {
+      background-color: #0a0a0a;
+    }
+
     .full-page-video-banner {
       position: relative;
       width: 100%;
@@ -130,13 +134,13 @@
 
     .product-section {
       padding: 100px 0;
-      background: #f8f9fa;
+      background: #1a1a1a;
     }
 
     .product-title {
       font-size: 3.5rem;
       font-weight: 700;
-      color: #1a1a1a;
+      color: #ffffff;
       text-align: center;
       margin-bottom: 1rem;
     }
@@ -149,6 +153,35 @@
       font-weight: 600;
     }
 
+    .solution-description-section {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 3rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      margin-bottom: 4rem;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    .solution-intro {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 2rem;
+      line-height: 1.4;
+    }
+
+    .solution-details {
+      font-size: 1.1rem;
+      color: #cccccc;
+      line-height: 1.8;
+      margin-bottom: 0;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
     .feature-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -157,17 +190,20 @@
     }
 
     .feature-card {
-      background: #ffffff;
+      background: rgba(255, 255, 255, 0.05);
       padding: 2rem;
       border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
       text-align: center;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
     }
 
     .feature-card:hover {
       transform: translateY(-10px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      border-color: rgba(255, 107, 53, 0.3);
     }
 
     .feature-icon {
@@ -186,12 +222,12 @@
     .feature-title {
       font-size: 1.5rem;
       font-weight: 600;
-      color: #1a1a1a;
+      color: #ffffff;
       margin-bottom: 1rem;
     }
 
     .feature-description {
-      color: #666666;
+      color: #cccccc;
       line-height: 1.6;
     }
 
@@ -216,8 +252,8 @@
     }
 
     .btn-cta {
-      background: #ffffff;
-      color: #ff6b35;
+      background: linear-gradient(135deg, #ff6b35, #ff8c42);
+      color: #ffffff;
       padding: 15px 40px;
       border-radius: 50px;
       text-decoration: none;
@@ -225,13 +261,15 @@
       font-size: 1.1rem;
       transition: all 0.3s ease;
       display: inline-block;
+      border: none;
+      box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);
     }
 
     .btn-cta:hover {
-      background: #f8f9fa;
+      background: linear-gradient(135deg, #ff8c42, #ff6b35);
       transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-      color: #ff6b35;
+      box-shadow: 0 10px 25px rgba(255, 107, 53, 0.4);
+      color: #ffffff;
     }
 
     @media (max-width: 768px) {
@@ -325,11 +363,25 @@
 
         <div class="row justify-content-center">
           <div class="col-lg-8 text-center" data-aos="fade-up" data-aos-delay="200">
-            <div style="font-size: 2.5rem; font-weight: 700; color: #1a1a1a; line-height: 1.2; margin-bottom: 3rem;">
+            <div style="font-size: 2.5rem; font-weight: 700; color: #ffffff; line-height: 1.2; margin-bottom: 3rem;">
               <div>Supply Chain</div>
               <div style="font-size: 1.5rem; color: #ff6b35; margin: 1rem 0;">&</div>
               <div>Shipping Desk /</div>
               <div>Custom House Agent Operation</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Solution Description -->
+        <div class="row justify-content-center">
+          <div class="col-lg-10" data-aos="fade-up" data-aos-delay="300">
+            <div class="solution-description-section">
+              <p class="solution-intro">
+                An AI-driven, cloud-based Supply Chain, Shipping Desk and Custom house agent operation application.
+              </p>
+              <p class="solution-details">
+                Our solution is purpose-built to streamline import/export operations, enhance regulatory compliance, and provide intelligent automation through machine learning and NLP technologies. Seamlessly integrating with ERP systems such as SAP ECC and S/4HANA, the platform eliminates manual bottlenecks, reduces operational costs, and delivers real-time visibility into the PO-to-clearance lifecycle.
+              </p>
             </div>
           </div>
         </div>

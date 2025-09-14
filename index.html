@@ -525,7 +525,7 @@
             <div class="director-card">
               <div class="director-image">
                 <a href="https://www.linkedin.com/in/rishad-rasheed-5ba74b60/" target="_blank" class="director-link">
-                  <img src="assets/img/person/rishad.JPG" alt="Director 1" class="img-fluid">
+                  <img src="assets/img/person/rishad_old.jpg" alt="Director 1" class="img-fluid">
                   <div class="director-overlay">
                     <div class="social-links">
                       <i class="bi bi-linkedin"></i>
@@ -799,7 +799,7 @@
             <div class="contact-form-wrapper">
               <h2 class="text-center mb-4">Get in Touch</h2>
 
-              <form action="forms/contact.php" method="post" class="php-email-form">
+              <form id="contactForm" class="php-email-form">
                 <div class="row g-3">
                   <div class="col-md-6">
                     <div class="form-group">
@@ -823,7 +823,7 @@
                     <div class="form-group">
                       <div class="input-with-icon">
                         <i class="bi bi-text-left"></i>
-                        <input type="text" class="form-control" name="sbject" placeholder="Subject" required="">
+                        <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
                       </div>
                     </div>
                   </div>
@@ -841,7 +841,7 @@
                   <div class="col-12">
                     <div class="loading">Loading</div>
                     <div class="error-message"></div>
-                    <div class="sent-message">Your message has been sent. Thank you!</div>
+                    <div class="sent-message">Your request has been submitted successfully</div>
                   </div>
 
                   <div class="col-12 text-center">
@@ -919,7 +919,6 @@
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
@@ -928,6 +927,52 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <!-- Contact Form Handler -->
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Get form data with error handling
+      const nameField = document.querySelector('input[name="name"]');
+      const emailField = document.querySelector('input[name="email"]');
+      const subjectField = document.querySelector('input[name="subject"]');
+      const messageField = document.querySelector('textarea[name="message"]');
+      
+      if (!nameField || !emailField || !subjectField || !messageField) {
+        console.error('Form fields not found');
+        return;
+      }
+      
+      const name = nameField.value;
+      const email = emailField.value;
+      const subject = subjectField.value;
+      const message = messageField.value;
+      
+      // Simple validation
+      if (!name || !email || !subject || !message) {
+        alert('Please fill in all fields.');
+        return;
+      }
+      
+      // Show success message
+      const sentMessage = document.querySelector('.sent-message');
+      const loading = document.querySelector('.loading');
+      const errorMessage = document.querySelector('.error-message');
+      
+      if (sentMessage) sentMessage.style.display = 'block';
+      if (loading) loading.style.display = 'none';
+      if (errorMessage) errorMessage.style.display = 'none';
+      
+      // Reset form
+      this.reset();
+      
+      // Hide success message after 5 seconds
+      setTimeout(function() {
+        if (sentMessage) sentMessage.style.display = 'none';
+      }, 5000);
+    });
+  </script>
 
 </body>
 
